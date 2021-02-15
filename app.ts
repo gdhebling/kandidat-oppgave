@@ -36,10 +36,12 @@ const initApp = () => {
     const detailsWrapper = document.querySelector('.details__wrapper');
     detailsWrapper.insertAdjacentHTML('afterbegin', detailsCard.join(''));
 
-    /* Rendering the address and contact information */
+    /* Rendering the address */
 
     const addressWrapper = document.querySelector('.address__wrapper');
-    addressWrapper.innerHTML = `
+    addressWrapper.insertAdjacentHTML(
+      'afterbegin',
+      `
     <div class="address__title text-primary">Adresse</div>
 
     <div class="address__street text-secondary">
@@ -49,9 +51,15 @@ const initApp = () => {
         <div class="address__zipcode text-secondary">${data.address.zipCode}</div>
         <div class="address__city text-secondary">${data.address.city}</div>
     </div>
-  `;
+  `
+    );
+
+    /* Rendering the contact information */
+
     const contactWrapper = document.querySelector('.contact__wrapper');
-    contactWrapper.innerHTML = `
+    contactWrapper.insertAdjacentHTML(
+      'afterbegin',
+      `
     <div class="contact__title text-primary">Kontakt</div>
     <div class="contact__name text-secondary">
         <p>${data.contact.name}</p>
@@ -60,7 +68,8 @@ const initApp = () => {
         <p>${data.contact.phone}</p>
     </div>
 
-  `;
+  `
+    );
 
     console.log(data);
   };

@@ -67,11 +67,12 @@ var initApp = function () {
         });
         var detailsWrapper = document.querySelector('.details__wrapper');
         detailsWrapper.insertAdjacentHTML('afterbegin', detailsCard.join(''));
-        /* Rendering the address and contact information */
+        /* Rendering the address */
         var addressWrapper = document.querySelector('.address__wrapper');
-        addressWrapper.innerHTML = "\n    <div class=\"address__title text-primary\">Adresse</div>\n\n    <div class=\"address__street text-secondary\">\n        " + data.address.street + "\n    </div>\n    <div class=\"zipcode__wrapper\">\n        <div class=\"address__zipcode text-secondary\">" + data.address.zipCode + "</div>\n        <div class=\"address__city text-secondary\">" + data.address.city + "</div>\n    </div>\n  ";
+        addressWrapper.insertAdjacentHTML('afterbegin', "\n    <div class=\"address__title text-primary\">Adresse</div>\n\n    <div class=\"address__street text-secondary\">\n        " + data.address.street + "\n    </div>\n    <div class=\"zipcode__wrapper\">\n        <div class=\"address__zipcode text-secondary\">" + data.address.zipCode + "</div>\n        <div class=\"address__city text-secondary\">" + data.address.city + "</div>\n    </div>\n  ");
+        /* Rendering the contact information */
         var contactWrapper = document.querySelector('.contact__wrapper');
-        contactWrapper.innerHTML = "\n    <div class=\"contact__title text-primary\">Kontakt</div>\n    <div class=\"contact__name text-secondary\">\n        <p>" + data.contact.name + "</p>\n    </div>\n    <div class=\"contact__phone text-secondary\">\n        <p>" + data.contact.phone + "</p>\n    </div>\n\n  ";
+        contactWrapper.insertAdjacentHTML('afterbegin', "\n    <div class=\"contact__title text-primary\">Kontakt</div>\n    <div class=\"contact__name text-secondary\">\n        <p>" + data.contact.name + "</p>\n    </div>\n    <div class=\"contact__phone text-secondary\">\n        <p>" + data.contact.phone + "</p>\n    </div>\n\n  ");
         console.log(data);
     };
     fetchData();

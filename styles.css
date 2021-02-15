@@ -1,0 +1,11 @@
+:root {
+  --white-text: #eef6f8;
+  --gold-text: #b4a276;
+  --bg-color: #00272e;
+  --font-family: ;
+}
+
+body {
+  background-color: var(--bg-color);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

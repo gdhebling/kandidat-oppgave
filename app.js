@@ -34,39 +34,45 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var fortressUrl = 'https://fortress.no/data/data-2020-interview.json';
-var fetchData = function () {
-    return __awaiter(this, void 0, void 0, function () {
-        var resp, data;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4 /*yield*/, fetch(fortressUrl)];
-                case 1:
-                    resp = _a.sent();
-                    return [4 /*yield*/, resp.json()];
-                case 2:
-                    data = _a.sent();
-                    renderData(data);
-                    return [2 /*return*/];
-            }
+document.addEventListener('DOMContentLoaded', function () {
+    initApp();
+});
+[];
+var initApp = function () {
+    var fortressUrl = 'https://fortress.no/data/data-2020-interview.json';
+    var fetchData = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var resp, data;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, fetch(fortressUrl)];
+                    case 1:
+                        resp = _a.sent();
+                        return [4 /*yield*/, resp.json()];
+                    case 2:
+                        data = _a.sent();
+                        renderData(data);
+                        return [2 /*return*/];
+                }
+            });
         });
-    });
+    };
+    var renderData = function (data) {
+        /* Rendering the titles */
+        var titleWrapper = document.querySelector('.title__wrapper');
+        titleWrapper.insertAdjacentHTML('afterbegin', "\n  <h2 class=\"title__item text-primary\">" + data.title[0] + "</h2>\n  <h2 class=\"title__item text-primary\">" + data.title[1] + "</h2>\n  ");
+        /* Rendering the property details */
+        var detailsCard = data.details.map(function (detail) {
+            return "\n        <div class=\"container details__card\">\n            <p class=\"details__item details__name text-primary\">" + detail.name + "</p>\n            <p class=\"details__item details__value text-secondary\">" + detail.value + "</p>\n        </div>\n      ";
+        });
+        var detailsWrapper = document.querySelector('.details__wrapper');
+        detailsWrapper.insertAdjacentHTML('afterbegin', detailsCard.join(''));
+        /* Rendering the address and contact information */
+        var addressWrapper = document.querySelector('.address__wrapper');
+        addressWrapper.innerHTML = "\n    <div class=\"address__title text-primary\">Adresse</div>\n\n    <div class=\"address__street text-secondary\">\n        " + data.address.street + "\n    </div>\n    <div class=\"zipcode__wrapper\">\n        <div class=\"address__zipcode text-secondary\">" + data.address.zipCode + "</div>\n        <div class=\"address__city text-secondary\">" + data.address.city + "</div>\n    </div>\n  ";
+        var contactWrapper = document.querySelector('.contact__wrapper');
+        contactWrapper.innerHTML = "\n    <div class=\"contact__title text-primary\">Kontakt</div>\n    <div class=\"contact__name text-secondary\">\n        <p>" + data.contact.name + "</p>\n    </div>\n    <div class=\"contact__phone text-secondary\">\n        <p>" + data.contact.phone + "</p>\n    </div>\n\n  ";
+        console.log(data);
+    };
+    fetchData();
 };
-var renderData = function (data) {
-    /* Rendering the titles */
-    var titleWrapper = document.querySelector('.title__wrapper');
-    titleWrapper.innerHTML = "\n  <h2 class=\"title__item text-primary\">" + data.title[0] + "</h2>\n  <h2 class=\"title__item text-primary\">" + data.title[1] + "</h2>\n  ";
-    /* Rendering the property details */
-    var detailsCard = data.details.map(function (detail) {
-        return "\n        <div class=\"container details__card\">\n            <p class=\"details__item details__name text-primary\">" + detail.name + "</p>\n            <p class=\"details__item details__value text-secondary\">" + detail.value + "</p>\n        </div>\n      ";
-    });
-    var detailsWrapper = document.querySelector('.details__wrapper');
-    detailsWrapper.innerHTML = detailsCard.join('');
-    /* Rendering the address and contact information */
-    var addressWrapper = document.querySelector('.address__wrapper');
-    addressWrapper.innerHTML = "\n    <div class=\"address__title text-primary\">Adresse</div>\n\n    <div class=\"address__street text-secondary\">\n        " + data.address.street + "\n    </div>\n    <div class=\"zipcode__wrapper\">\n        <div class=\"address__zipcode text-secondary\">" + data.address.zipCode + "</div>\n        <div class=\"address__city text-secondary\">" + data.address.city + "</div>\n    </div>\n  ";
-    var contactWrapper = document.querySelector('.contact__wrapper');
-    contactWrapper.innerHTML = "\n    <div class=\"contact__title text-primary\">Kontakt</div>\n    <div class=\"contact__name text-secondary\">\n        <p>" + data.contact.name + "</p>\n    </div>\n    <div class=\"contact__phone text-secondary\">\n        <p>" + data.contact.phone + "</p>\n    </div>\n\n  ";
-    console.log(data);
-};
-fetchData();

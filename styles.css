@@ -5,7 +5,71 @@
   --font-family: ;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   background-color: var(--bg-color);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+main {
+  padding: 2rem;
+}
+
+section {
+  margin: 2rem 0;
+}
+
+.container {
+  margin: 0.5rem;
+}
+
+.text-primary {
+  color: var(--white-text);
+  font-weight: normal;
+  font-size: 1.5rem;
+}
+
+.text-secondary {
+  color: var(--gold-text);
+  font-weight: normal;
+  font-size: 1.5rem;
+}
+
+.title__item {
+  font-size: 2rem;
+}
+
+.details__wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+}
+
+.details__card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1 0 33%;
+  border-bottom: 2px solid var(--white-text);
+}
+
+.details__name,
+.details__value {
+}
+
+.footer__wrapper {
+  display: flex;
+}
+
+.zipcode__wrapper {
+  display: flex;
+}
+
+.address__zipcode {
+  margin-right: 1ch;
 }

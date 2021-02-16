@@ -32,11 +32,6 @@ Task 2 deployed at: https://task-2-gdhebling.netlify.app/
    git clone https://github.com/gdhebling/kandidat-oppgave.git
    ```
 
-2. Run a local server
-   ```sh
-   npm install
-   ```
-
 ## Usage
 
 ### Task 1

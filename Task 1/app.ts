@@ -3,11 +3,17 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 [];
 
-const formatter = new Intl.NumberFormat('nb-NO', {
+const currencyFormatter = new Intl.NumberFormat('nb-NO', {
   style: 'currency',
   currency: 'NOK',
   minimumFractionDigits: 0,
-});
+}).resolvedOptions().maximumFractionDigits;
+
+const formatPhoneNumber = (number: number) => {
+  return `+47 ${number.toString().replace(/\d{2}(?=.)/g, '$& ')}`;
+};
+
+console.log(formatPhoneNumber(92992929));
 
 const initApp = () => {
   // const fortressUrl = 'https://fortress.no/data/data-2020-interview.json';
@@ -44,7 +50,9 @@ const initApp = () => {
             }">${
         isNaN(detail.value)
           ? detail.value
-          : formatter.format(detail.value) + ',-'
+          : detail.value.toLocaleString('nb-NO', {
+              maximumFractionDigits: currencyFormatter,
+            }) + ',-'
       }</p>
         </div>
       `;
@@ -81,7 +89,7 @@ const initApp = () => {
         <p>${data.contact.name}</p>
     </div>
     <div class="contact__phone text-secondary">
-        <p>${data.contact.phone}</p>
+        <p>${formatPhoneNumber(data.contact.phone)}</p>
     </div>
 
   `;

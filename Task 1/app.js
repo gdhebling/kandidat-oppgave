@@ -12,11 +12,15 @@ document.addEventListener('DOMContentLoaded', () => {
     initApp();
 });
 [];
-const formatter = new Intl.NumberFormat('nb-NO', {
+const currencyFormatter = new Intl.NumberFormat('nb-NO', {
     style: 'currency',
     currency: 'NOK',
     minimumFractionDigits: 0,
-});
+}).resolvedOptions().maximumFractionDigits;
+const formatPhoneNumber = (number) => {
+    return `+47 ${number.toString().replace(/\d{2}(?=.)/g, '$& ')}`;
+};
+console.log(formatPhoneNumber(92992929));
 const initApp = () => {
     // const fortressUrl = 'https://fortress.no/data/data-2020-interview.json';
     const fortressUrl = './data.json';
@@ -41,7 +45,9 @@ const initApp = () => {
             <p class="details__item details__name text-primary capitalize">${detail.name}</p>
             <p class="details__item details__value text-secondary ${isNaN(detail.value) ? 'capitalize' : ''}">${isNaN(detail.value)
                 ? detail.value
-                : formatter.format(detail.value) + ',-'}</p>
+                : detail.value.toLocaleString('nb-NO', {
+                    maximumFractionDigits: currencyFormatter,
+                }) + ',-'}</p>
         </div>
       `;
         });
@@ -68,7 +74,7 @@ const initApp = () => {
         <p>${data.contact.name}</p>
     </div>
     <div class="contact__phone text-secondary">
-        <p>${data.contact.phone}</p>
+        <p>${formatPhoneNumber(data.contact.phone)}</p>
     </div>
 
   `;

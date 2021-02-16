@@ -13,7 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 [];
 const initalizeApp = () => {
-    const fortressUrl2 = 'https://fortress.no/data/oppgave-2-2020.json';
+    // const fortressUrl2 = 'https://fortress.no/data/oppgave-2-2020.json';
+    const fortressUrl2 = './data.json';
     const fetchData = function () {
         return __awaiter(this, void 0, void 0, function* () {
             const resp = yield fetch(fortressUrl2);

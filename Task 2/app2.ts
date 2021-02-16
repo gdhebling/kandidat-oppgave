@@ -4,7 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
 [];
 
 const initalizeApp = () => {
-  const fortressUrl2 = 'https://fortress.no/data/oppgave-2-2020.json';
+  // const fortressUrl2 = 'https://fortress.no/data/oppgave-2-2020.json';
+  const fortressUrl2 = './data.json';
 
   const fetchData = async function () {
     const resp = await fetch(fortressUrl2);

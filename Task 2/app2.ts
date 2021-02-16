@@ -10,7 +10,24 @@ const initalizeApp = () => {
     const resp = await fetch(fortressUrl2);
     const data = await resp.json();
 
-    console.log(data);
+    handleList(data);
+  };
+
+  const handleList = (
+    data: [
+      {
+        name: string;
+        value: string;
+        description: string;
+      }
+    ]
+  ) => {
+    const filteredList = data.filter(
+      (data) => data.description === 'valid' || data.description === 'true'
+    );
+
+    const sortedList = filteredList.sort((a: any, b: any) => b.value - a.value);
+    console.log('sortedList', sortedList);
   };
 
   fetchData();

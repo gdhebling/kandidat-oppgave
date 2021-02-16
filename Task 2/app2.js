@@ -18,8 +18,13 @@ const initalizeApp = () => {
         return __awaiter(this, void 0, void 0, function* () {
             const resp = yield fetch(fortressUrl2);
             const data = yield resp.json();
-            console.log(data);
+            handleList(data);
         });
+    };
+    const handleList = (data) => {
+        const filteredList = data.filter((data) => data.description === 'valid' || data.description === 'true');
+        const sortedList = filteredList.sort((a, b) => b.value - a.value);
+        console.log('sortedList', sortedList);
     };
     fetchData();
 };

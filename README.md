@@ -21,8 +21,8 @@ This application consist of two tasks:
 
 Please refer to the deployed links to check both tasks, or follow the next steps to get a local copy.
 
-Task 1 deployed at:  
-Task 2 deployed at:
+Task 1 deployed at: https://task-1-gdhebling.netlify.app/
+Task 2 deployed at: https://task-2-gdhebling.netlify.app/
 
 ### Installation
 

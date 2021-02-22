@@ -10,7 +10,7 @@
 
 ## The Project
 
-<a href="https://nord-agency-gdhebling.netlify.app/" alt="Website Screenshot">![nord agency by gdhebling](assets/task-1-screenshot.png)</a>
+<a href="https://task-1-gdhebling.netlify.app/" alt="Website Screenshot">![Task 1 Screenshot](assets/task-1-screenshot.png)</a>
 
 This application consist of two tasks:
 
